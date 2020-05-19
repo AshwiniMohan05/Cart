@@ -3,10 +3,16 @@
     display: flex;
     background-color: #fff;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-
-
+.date{
+    display: flex;
+    flex-direction: column;
+}
+p{
+    font-weight: bold;
+}
 .cart{
     display: flex;
     justify-content: space-around;

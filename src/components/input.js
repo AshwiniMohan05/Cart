@@ -10,7 +10,7 @@ export const Input = (props) => {
   return (
     <React.Fragment>
       <form className="form-wrapper2">
-          {Object.keys(props.address).map((key) => {
+          {Object.keys(props.address).slice(0,8).map((key) => {
             return (
               <>
                 <input
