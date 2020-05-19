@@ -1,57 +1,66 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { abc } from "../../data";
-import get from "lodash/get";
 import { Input } from "../input";
-import { Button } from "../button";
+import { ProductDetails } from "../product-details";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 import "./form.m.css";
 
-export const FormDetails = () => {
-//   let defaultState = abc;
 
-  const [ defaultShippingAddress, setDefaultStateShipping ] = useState(abc.shippingAddress)
-  const [ defaultBillingAddress, setDefaultStateBilling ] = useState(abc.billingAddress)
+export const FormDetails = () => {
+  const [defaultShippingAddress, setDefaultStateShipping] = useState(
+    abc.shippingAddress
+  );
+  const [startDate, setStartDate] = useState(new Date());
+  const [startDate1, setStartDate1] = useState("");
+
+  console.log("abc", abc);
+  const [defaultBillingAddress, setDefaultStateBilling] = useState(
+    abc.billingAddress
+  );
 
   const handleChange = (foo, value, type) => {
-    setDefaultStateBilling(prevState => {
-        let defaultBillingAddress = Object.assign({}, prevState.defaultBillingAddress);  // creating copy of state variable jasper
-        defaultBillingAddress[foo] = value;  
-        console.log("default state",  defaultBillingAddress);
-        console.log("prev-------", prevState)                   // update the name property, assign a new value                 
-        return { defaultBillingAddress };                                 // return new object jasper object
-      })  
-//   type === "shippingAddress" && setDefaultStateShipping({ ...defaultShippingAddress, [foo] : value } );
-//   type === "billingAddress" && setDefaultStateBilling({ ...defaultBillingAddress, [foo] : value } )
-
+    type === "billingAddress" &&
+      setDefaultStateBilling((prevState) => {
+        console.log("prev state", prevState);
+        let defaultBillingAddress = Object.assign({}, prevState);
+        defaultBillingAddress[foo] = value;
+        return defaultBillingAddress;
+      });
+    type === "shippingAddress" &&
+      setDefaultStateShipping((prevState) => {
+        let defaultBillingAddress = Object.assign({}, prevState);
+        defaultBillingAddress[foo] = value;
+        return defaultBillingAddress;
+      });
   };
 
-  
   return (
     <div>
-      <div className="form-wrapper">
-        <Input
-          address={defaultBillingAddress}
-          handleChange={handleChange}
-        >
-          Billing Details{" "}
-        </Input>
-        <Input address={defaultShippingAddress}>Shipping Details </Input>
+      <div className="form-wrapper1">
+        billingAddress
+        <Input address={defaultBillingAddress} handleChange={handleChange} />
+        <div>
+        Order date
+        <DatePicker
+          className="date-picker"
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+       
+        />
+        </div>
+        shippingAddress
+        <Input address={defaultShippingAddress} handleChange={handleChange} />
+        expected delivery
+        <DatePicker
+          className="date-picker"
+          selected={startDate1}
+          onChange={(date) => setStartDate1(date)}
+          placeholderText ="Date"
+        />
       </div>
-      {/* <div className="cart">
-        {console.log("product title", defaultState.productsTitle)}
-        {defaultState.productsTitle.map((item, index) => {
-          const abc = get(item, ["productsData", "0", "data"]);
-          return (
-            <div key={index}>
-              {item.name}
-
-              <div>
-                <input type="text" value={abc} />
-              </div>
-            </div>
-          );
-        })}
-        <Button name="ADD PRODUCT" />
-      </div> */}
+      <ProductDetails />
     </div>
   );
 };

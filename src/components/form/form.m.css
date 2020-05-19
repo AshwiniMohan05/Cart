@@ -1,6 +1,12 @@
-.form-wrapper{
+.form-wrapper1{
+    margin: 40px;
     display: flex;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 }
+
+
+
 .cart{
     display: flex;
     justify-content: space-around;

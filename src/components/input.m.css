@@ -1,4 +1,26 @@
-.form-wrapper{
-    display: flex;
-    width: 200px;
+.form-wrapper2{
+    /* display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 200px; */
+
 }
+/* .input-field{
+    width: 200px;
+} */
+.field{
+    width: 200px;
+    display: flex;
+    margin: 10px;
+    padding: 3px;
+}
+.date-picker
+{
+  background-image : url('https://img.icons8.com/wired/30/000000/calendar.png');
+  background-Position : 97% center;
+  background-Repeat :no-repeat;
+  cursor:pointer;
+  padding: 8px;
+}
+
+  
+  

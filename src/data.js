@@ -21,63 +21,41 @@ export const abc ={
         country: "India",
         type: "shippingAddress"
     },
-    productsTitle : [
-        {
-          name: "Product ID",
-          productsData: [
-            {
-              data: 1000040
-            }
-          ]
-        },
-        {
-          name: "Product Name",
-          productsData: [
-            {
-              data: "Dinning Table"
-            }
-          ]
-        },
-        {
-          name: "QTY",
-          productsData: [
-            {
-              data: 8
-            }
-          ]
-        },
-        {
-          name: "Unit Price",
-          productsData: [
-            {
-              data: 2344555
-            }
-          ]
-        },
-        {
-          name: "Total Price",
-          productsData: [
-            {
-              data: ""
-            }
-          ]
-        },
-        {
-          name: "Notes",
-          productsData: [
-            {
-              data: ""
-            }
-          ]
-        },
-        {
-          name: "-",
-          productsData: [
-            {
-              data: ""
-            }
-          ]
-        }
-      ]
-    
+    productsDetails : [
+      {
+        productId: 12344,
+        productName: "Dinning Table",
+        qty: 3,
+        unitPrice: 6
+      },
+      {
+        productId: 12343,
+        productName: "Tv Stand",
+        qty: 1,
+        unitPrice: 6
+      }
+    ]
 }
+export const ProductsData = [
+  {
+    name: "Product ID"
+  },
+  {
+    name: "Product Name"
+  },
+  {
+    name: "QTY"
+  },
+  {
+    name: "Unit Price"
+  },
+  {
+    name: "Total Price"
+  },
+  {
+    name: "Notes"
+  },
+  {
+    name: "-"
+  }
+];

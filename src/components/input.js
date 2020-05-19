@@ -2,19 +2,27 @@ import React from "react";
 import "./input.m.css";
 
 export const Input = (props) => {
+  console.log(props, "props");
+  const poo = (e, key) => {
+    props.handleChange(key, e.target.value, props.address.type);
+  };
+
   return (
     <React.Fragment>
-      <div>{props.children}</div>
-      <form className="form-wrapper">
-          <div>
-        {Object.keys(props.address).map((key) => {
-          return (
-            <>
-              <input type="text" defaultValue={props.address[key]} placeholder={key} onChange={() => props.handleChange(key, props.address[key],props.address.type)} />
-            </>
-          );
-        })}
-        </div>
+      <form className="form-wrapper2">
+          {Object.keys(props.address).map((key) => {
+            return (
+              <>
+                <input
+                  type="text"
+                  defaultValue={props.address[key]}
+                  placeholder={key}
+                  onChange={(e) => poo(e, key)}
+                  className="field"
+                />
+              </>
+            );
+          })}
       </form>
     </React.Fragment>
   );
