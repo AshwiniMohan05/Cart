@@ -5,14 +5,14 @@ import "./product-details.m.css";
 
 export const ProductDetails = () => {
 
-  const [state1, updateRow] = useState(cartDetails.productsDetails);
+  const [row, updateRow] = useState(cartDetails.productsDetails);
 
   const handleAddRow = () => {
-    updateRow([...state1, {}]);
+    updateRow([...row, {}]);
   };
 
   const handleRemoveSpecificRow = (idx) => () => {
-    const rows = [...state1];
+    const rows = [...row];
     rows.splice(idx, 1);
     updateRow(rows);
   };
@@ -24,7 +24,7 @@ export const ProductDetails = () => {
           return <div key={index}>{title.name}</div>;
         })}
       </div>
-      {state1.map((item, idx) => {
+      {row.map((item, idx) => {
         return (
           <div key={idx} className="items">
             <input type="text" defaultValue={item.productId} />
