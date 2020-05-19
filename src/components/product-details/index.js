@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { abc, ProductsData } from "../../data";
+import { cartDetails, ProductsData } from "../../data";
 import { Button } from "../button";
 import "./product-details.m.css";
 
 export const ProductDetails = () => {
 
-  const [state1, updateRow] = useState(abc.productsDetails);
+  const [state1, updateRow] = useState(cartDetails.productsDetails);
 
   const handleAddRow = () => {
     updateRow([...state1, {}]);

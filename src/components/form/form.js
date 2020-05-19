@@ -1,23 +1,25 @@
 import React, { useState } from "react";
-import { abc } from "../../data";
+import { cartDetails } from "../../data";
 import { Input } from "../input";
 import { ProductDetails } from "../product-details";
 import DatePicker from "react-datepicker";
-
+import { Button } from "../button";
 import "react-datepicker/dist/react-datepicker.css";
 import "./form.m.css";
 
 
+
 export const FormDetails = () => {
   const [defaultShippingAddress, setDefaultStateShipping] = useState(
-    abc.shippingAddress
+    cartDetails.shippingAddress
   );
   const [startDate, setStartDate] = useState(new Date());
-  const [startDate1, setStartDate1] = useState("");
-  const [finalJson, setFinalJson] = useState(abc);
+  const [expiryDate, setExpiryDate] = useState("");
+  const [finalJson, setFinalJson] = useState(cartDetails);
+  const [productsTitle, setProductsTitle] = useState(cartDetails.productsTitle);
 
   const [defaultBillingAddress, setDefaultStateBilling] = useState(
-    abc.billingAddress
+    cartDetails.billingAddress
   );
 
   const handleChange = (foo, value, type) => {
@@ -33,49 +35,60 @@ export const FormDetails = () => {
         defaultBillingAddress[foo] = value;
         return defaultBillingAddress;
       });
-      setFinalJson({
-        billingAddress: defaultBillingAddress,
-        shippingAddress: defaultShippingAddress,
-      })
+    setProductsTitle((prevState) => {
+      let productDetails = Object.assign({}, prevState);
+      productDetails[foo] = value;
+      return productDetails;
+    });
+    setFinalJson({
+      billingAddress: defaultBillingAddress,
+      shippingAddress: defaultShippingAddress,
+      productsTitle: productsTitle,
+    });
   };
 
-  const poo = () => {
+  const saveJson = () => {
     console.log(finalJson);
   };
 
-
   return (
     <div>
-      <div className="form-wrapper1">
+      <div className="form-wrapper">
         <div>
-        <p>Billing Address</p>
-        <Input address={defaultBillingAddress} handleChange={handleChange} />
-        <div className="date">
-        <p>Order date</p>
-        <DatePicker
-          className="date-picker"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-       
-        />
-        </div>
+          <p>Billing Address</p>
+          <Input
+            fieldName={defaultBillingAddress}
+            handleChange={handleChange}
+          />
+          <div className="date">
+            <p>Order date</p>
+            <DatePicker
+              className="date-picker"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
         </div>
         <div>
-        <p>Shipping Address</p>
-        <Input address={defaultShippingAddress} handleChange={handleChange} />
-        <div className="date">
-       <p>Expected Delivery</p> 
-        <DatePicker
-          className="date-picker"
-          selected={startDate1}
-          onChange={(date) => setStartDate1(date)}
-          placeholderText ="Date"
-        />
+          <p>Shipping Address</p>
+          <Input
+            fieldName={defaultShippingAddress}
+            handleChange={handleChange}
+          />
+          <div className="date">
+            <p>Expected Delivery</p>
+            <DatePicker
+              className="date-picker"
+              selected={expiryDate}
+              onChange={(date) => setExpiryDate(date)}
+              placeholderText="Date"
+            />
+          </div>
         </div>
       </div>
-      </div>
-      <button onClick={poo} >hey </button>
+
       <ProductDetails />
+      <Button onClick={saveJson} name="SAVE" className="save" />
     </div>
   );
 };

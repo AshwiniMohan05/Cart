@@ -1,7 +1,7 @@
-export const abc ={
+export const cartDetails ={
     billingAddress : {
-        firstName: "Ashwini",
-        lastName: "Mohan",
+        firstName: "Mark",
+        lastName: "Cox",
         addressLine1: "abc",
         addressLine2: "pqr",
         city: "Bangalore",
@@ -11,8 +11,8 @@ export const abc ={
         type: "billingAddress"
     },
     shippingAddress : {
-        firstName: "Priyanka",
-        lastName: "Ashok",
+        firstName: "John",
+        lastName: "Bob",
         addressLine1: "xyz",
         addressLine2: "lmn",
         city: "Mysore",
@@ -23,15 +23,15 @@ export const abc ={
     },
     productsDetails : [
       {
-        productId: 12344,
-        productName: "Dinning Table",
-        qty: 3,
+        productId: 1234,
+        productName: "Earphones",
+        qty: 1,
         unitPrice: 6
       },
       {
-        productId: 12343,
-        productName: "Tv Stand",
-        qty: 1,
+        productId: 4444,
+        productName: "Shoes",
+        qty: 5,
         unitPrice: 6
       }
     ]
