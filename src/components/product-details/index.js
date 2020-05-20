@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { cartDetails, ProductsData } from "../../data";
 import { Button } from "../button";
-import "./product-details.m.css";
+import "./product-details.css";
 
 export const ProductDetails = () => {
 
   const [row, updateRow] = useState(cartDetails.productsDetails);
-
   const handleAddRow = () => {
     updateRow([...row, {}]);
   };
 
-  const handleRemoveSpecificRow = (idx) => () => {
+  const handleDeleteRow = (index) => () => {
     const rows = [...row];
-    rows.splice(idx, 1);
+    rows.splice(index, 1);
     updateRow(rows);
   };
 
@@ -24,9 +23,9 @@ export const ProductDetails = () => {
           return <div key={index}>{title.name}</div>;
         })}
       </div>
-      {row.map((item, idx) => {
+      {row.map((item, key) => {
         return (
-          <div key={idx} className="items">
+          <div key={key} className="items">
             <input type="text" defaultValue={item.productId} />
             <input
               type="text"
@@ -44,7 +43,7 @@ export const ProductDetails = () => {
             <Button
               className="deleteButton"
               id="delete"
-              onClick={handleRemoveSpecificRow(idx)}
+              onClick={handleDeleteRow(key)}
               name="DELETE"
             />
           </div>

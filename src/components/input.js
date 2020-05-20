@@ -7,33 +7,30 @@ const ZipcodeRegex = RegExp(/^\d{1,5}$/);
 export const Input = (props) => {
   const handleFieldChange = (e, key) => {
     const { name, value } = e.target;
-    console.log("value", value);
+    const updateDom = document.getElementById(name);
     switch (name) {
       case "lastName":
         value.length < 4
-          ? (document.getElementById(name).innerHTML =
-              "Should have atleast 4 letters ")
-          : (document.getElementById(name).innerHTML = "");
+          ? updateDom.innerHTML =
+              "Should have atleast 4 letters "
+          : updateDom.innerHTML = "";
         break;
-      case "addressLine1":
       case "addressLine2":
         AddressRegex.test(value)
-          ? (document.getElementById(name).innerHTML =
+          ? (updateDom.innerHTML =
               "Special Characters not allowed")
-          : (document.getElementById(name).innerHTML = "");
+          : (updateDom.innerHTML = "");
         break;
-      case "city":
-      case "country":
       case "state":
         value === ""
-          ? (document.getElementById(name).innerHTML = "Mandatory field")
-          : (document.getElementById(name).innerHTML = "");
+          ? (updateDom.innerHTML = "Mandatory field")
+          : (updateDom.innerHTML = "");
         break;
       case "zipcode":
         ZipcodeRegex.test(value)
-          ? (document.getElementById(name).innerHTML =
+          ? (updateDom.innerHTML =
               "Please revise your five-digit Zip Code.")
-          : (document.getElementById(name).innerHTML = "");
+          : (updateDom.innerHTML = "");
         break;
       default:
         break;

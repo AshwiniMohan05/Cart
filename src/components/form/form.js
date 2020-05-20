@@ -4,10 +4,9 @@ import { Input } from "../input";
 import { ProductDetails } from "../product-details";
 import DatePicker from "react-datepicker";
 import { Button } from "../button";
+
 import "react-datepicker/dist/react-datepicker.css";
-import "./form.m.css";
-
-
+import "./form.css";
 
 export const FormDetails = () => {
   const [defaultShippingAddress, setDefaultStateShipping] = useState(
@@ -22,22 +21,22 @@ export const FormDetails = () => {
     cartDetails.billingAddress
   );
 
-  const handleChange = (foo, value, type) => {
+  const handleChange = (key, value, type) => {
     type === "billingAddress" &&
       setDefaultStateBilling((prevState) => {
         let defaultBillingAddress = Object.assign({}, prevState);
-        defaultBillingAddress[foo] = value;
+        defaultBillingAddress[key] = value;
         return defaultBillingAddress;
       });
     type === "shippingAddress" &&
       setDefaultStateShipping((prevState) => {
         let defaultBillingAddress = Object.assign({}, prevState);
-        defaultBillingAddress[foo] = value;
+        defaultBillingAddress[key] = value;
         return defaultBillingAddress;
       });
     setProductsTitle((prevState) => {
       let productDetails = Object.assign({}, prevState);
-      productDetails[foo] = value;
+      productDetails[key] = value;
       return productDetails;
     });
     setFinalJson({
